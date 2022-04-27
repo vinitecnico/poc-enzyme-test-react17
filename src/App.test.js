@@ -1,8 +1,14 @@
-import { render, screen } from '@testing-library/react';
+import { mount } from 'enzyme';
+import React from 'react'
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+it('renders learn react link', () => {
+  const wrapper = mount( <App />);
+  expect(wrapper).toMatchSnapshot();
+});
+
+
+it('renders learn react link', () => {
+  const wrapper = mount(<App />);
+  expect(wrapper.find({ "data-testid": "description" }).text()).toEqual('Edit src/App.js and save to reload.')
 });
